@@ -16,9 +16,7 @@ import com.example.foodapp.R;
 import com.example.foodapp.ShowDetailsActivity;
 
 import java.util.ArrayList;
-
 public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHolder> {
-
     private ArrayList<FoodDomain> popularFood;
 
     public PopularAdaptor(ArrayList<FoodDomain> popularFood) {
@@ -43,17 +41,21 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
                 .load(drawableResourceId)
                 .into(holder.pic);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Handle button click (item selection) here
                 int clickedPosition = holder.getAdapterPosition();
                 if (clickedPosition != RecyclerView.NO_POSITION) {
+                    // Perform any necessary actions when the button is clicked
+                    // For example, you can pass the selected food item to another activity
                     Intent intent = new Intent(holder.itemView.getContext(), ShowDetailsActivity.class);
                     intent.putExtra("object", popularFood.get(clickedPosition));
                     holder.itemView.getContext().startActivity(intent);
                 }
             }
         });
+
     }
 
     @Override
@@ -62,7 +64,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView fee, title;
+        TextView fee, title, button;
         ImageView pic;
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,7 +72,7 @@ public class PopularAdaptor extends RecyclerView.Adapter<PopularAdaptor.ViewHold
             title = itemView.findViewById(R.id.title);
             pic = itemView.findViewById(R.id.pic);
             fee = itemView.findViewById(R.id.fee);
+            button = itemView.findViewById(R.id.addBtn1);
         }
     }
 }
-

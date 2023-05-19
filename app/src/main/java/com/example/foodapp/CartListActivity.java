@@ -18,12 +18,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CartListActivity extends AppCompatActivity {
 
-    private RecyclerView.Adapter adapter;
+     RecyclerView.Adapter adapter;
     private RecyclerView recyclerView;
     private ManagementCart managementCart;
-    TextView totalFeeTxt , taxTxt , deliveryTxt, totalTxt, emptyTxt;
-    private  double tax;
+    TextView totalFeeTxt, taxTxt, deliveryTxt, totalTxt, emptyTxt;
     private ScrollView scrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,33 +36,30 @@ public class CartListActivity extends AppCompatActivity {
         CalculateCart();
         bottomNavigation();
     }
-private void bottomNavigation(){
-    FloatingActionButton floatingActionButton=findViewById(R.id.cartBtn);
-    LinearLayout homeBtn = findViewById(R.id.homeBtn);
-    floatingActionButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(CartListActivity.this,CartListActivity.class));
-        }
-    });
-    homeBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(CartListActivity.this, MainActivity.class));
-        }
-    });
-}
+
+    private void bottomNavigation() {
+
+        LinearLayout homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CartListActivity.this, MainActivity.class));
+            }
+        });
+    }
+
     private void initView() {
-        recyclerView=findViewById(R.id.recyclerView);
-        totalFeeTxt=findViewById(R.id.totalFeeTxt);
-        deliveryTxt=findViewById(R.id.deliveryTxt);
-        totalTxt=findViewById(R.id.totalTxt);
-        emptyTxt=findViewById(R.id.emptyTxt);
-        scrollView=findViewById(R.id.scrollView3);
-        recyclerView=findViewById(R.id.cartView);
+        recyclerView = findViewById(R.id.recyclerView);
+        totalFeeTxt = findViewById(R.id.totalFeeTxt);
+        deliveryTxt = findViewById(R.id.deliveryTxt);
+        totalTxt = findViewById(R.id.totalTxt1);
+        emptyTxt = findViewById(R.id.emptyTxt);
+        scrollView = findViewById(R.id.scrollView3);
+        recyclerView = findViewById(R.id.cartView);
         taxTxt = findViewById(R.id.taxTxt);
 
     }
+
     private void initList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -76,26 +73,26 @@ private void bottomNavigation(){
         });
 
         recyclerView.setAdapter(adapter);
-        if (managementCart.getListCart().isEmpty()){
+        if (managementCart.getListCart().isEmpty()) {
             emptyTxt.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.GONE);
-        }else {
+        } else {
             emptyTxt.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
         }
     }
-    private void CalculateCart(){
-        double percentTax=0.82;
-        double delivery=10;
 
-        double tax = Math.round(managementCart.getTotalFee()*percentTax+100)/100.0;
-        double total = Math.round(managementCart.getTotalFee() + tax + delivery) / 100.0;
-        double itemTotal = Math.round(managementCart.getTotalFee()*100)/100.0;
-totalFeeTxt.setText("$"+itemTotal);
-        taxTxt.setText("$" + tax);
-        deliveryTxt.setText("$"+total);
+    private void CalculateCart() {
+        double percentTax = 0.82;
+        double delivery = 5;
 
+        double totalFee = managementCart.getTotalFee();
+        double tax = Math.round(totalFee * percentTax) / 100.0;
+        double total = Math.round((totalFee + tax + delivery) * 100) / 100.0;
 
-
+        totalFeeTxt.setText("$" + String.format("%.2f", totalFee));
+        taxTxt.setText("$" + String.format("%.2f", tax));
+        deliveryTxt.setText("$" + String.format("%.2f", delivery));
+        totalTxt.setText("$" + String.format("%.2f", total));
     }
 }
