@@ -41,7 +41,7 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
     public void onBindViewHolder(@NonNull CartListAdaptor.ViewHolder holder,int position) {
         holder.title.setText(foodDomains.get(position).getTitle());
         holder.feeEachItem.setText(String.valueOf(foodDomains.get(position).getFee()));
-        holder.totalEachItem.setText(String.valueOf(Math.round((foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()) * 100) / 100));
+        holder.totalEachItem.setText(String.valueOf(Math.round((foodDomains.get(position).getNumberInCart() * foodDomains.get(position).getFee()) * 100) / 100.0));
         holder.num.setText(String.valueOf(foodDomains.get(position).getNumberInCart()));
 
         int drawableRecourceId = holder.itemView.getContext().getResources().getIdentifier(foodDomains.get(position).getPic()
@@ -92,15 +92,10 @@ public class CartListAdaptor extends RecyclerView.Adapter<CartListAdaptor.ViewHo
             title=itemView.findViewById(R.id.titleTxt);
             feeEachItem=itemView.findViewById(R.id.feeEachItem);
             pic=itemView.findViewById(R.id.picCard);
-            plusItem=itemView.findViewById(R.id.plusBtn);
-            minusItem=itemView.findViewById(R.id.minusBtn);
+            plusItem=itemView.findViewById(R.id.plusCardBtn);
+            minusItem=itemView.findViewById(R.id.minusCartBtn);
             totalEachItem=itemView.findViewById(R.id.totalEachItem);
-            num=itemView.findViewById(R.id.numberOderTxt);
-
-
-
-
-
+            num=itemView.findViewById(R.id.textView18);
 
 
         }

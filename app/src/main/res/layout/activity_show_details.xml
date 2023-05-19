@@ -19,7 +19,7 @@
                 android:id="@+id/titleTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="title"
+                android:text="Title"
                 android:textColor="#373b54"
                 android:textSize="24sp"
                 android:textAlignment="center"

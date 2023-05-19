@@ -60,6 +60,7 @@ private void bottomNavigation(){
         emptyTxt=findViewById(R.id.emptyTxt);
         scrollView=findViewById(R.id.scrollView3);
         recyclerView=findViewById(R.id.cartView);
+        taxTxt = findViewById(R.id.taxTxt);
 
     }
     private void initList() {
@@ -88,10 +89,11 @@ private void bottomNavigation(){
         double delivery=10;
 
         double tax = Math.round(managementCart.getTotalFee()*percentTax+100)/100.0;
-        double total = Math.round(managementCart.getTotalFee()+tax+delivery*100)/100.0;
+        double total = Math.round(managementCart.getTotalFee() + tax + delivery) / 100.0;
         double itemTotal = Math.round(managementCart.getTotalFee()*100)/100.0;
 totalFeeTxt.setText("$"+itemTotal);
         taxTxt.setText("$" + tax);
+        deliveryTxt.setText("$"+total);
 
 
 

@@ -6,9 +6,9 @@
     <string name="get_started_btn">Get Started</string>
     <string name="perchaze">button</string>
     <string name="shoping_card">button</string>
-    <string name="title">title</string>
+    <string name="title">Title</string>
     <string name="todo">TODO</string>
     <string name="_0_0">0.0</string>
     <string name="add">+Add</string>
-    <string name="$">$</string>
+    <string name="sign">$</string>
 </resources>

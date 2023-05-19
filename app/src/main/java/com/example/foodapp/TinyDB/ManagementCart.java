@@ -25,7 +25,7 @@ public class ManagementCart {
         for (i = 0; i < listFood.size(); i++) {
             if (listFood.get(i).getTitle().equals(item.getTitle())) {
                 existAlready = true;
-                n = 1;
+                n = i; // Assign the index of the existing item to n
                 break;
             }
         }
@@ -37,7 +37,6 @@ public class ManagementCart {
         }
         tinyDB.putListObject("CartList", listFood);
         Toast.makeText(context, "Added To Your Cart", Toast.LENGTH_SHORT).show();
-
     }
 
     public ArrayList<FoodDomain> getListCart() {
@@ -67,8 +66,9 @@ public class ManagementCart {
         ArrayList<FoodDomain> listfood = getListCart();
         double fee = 0;
         int i;
-        for (i = 0; i < listfood.size(); i++) ;
-        fee = fee + (listfood.get(i).getFee() * listfood.get(i).getNumberInCart());
+        for (i = 0; i < listfood.size(); i++) {
+            fee = fee + (listfood.get(i).getFee() * listfood.get(i).getNumberInCart());
+        }
 
         return fee;
     }

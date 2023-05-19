@@ -18,8 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-private RecyclerView.Adapter adapter, adapter2;
-private RecyclerView recyclerViewCategoryList, recyclerViewPopularList;
+ RecyclerView.Adapter adapter, adapter2;
+ RecyclerView recyclerViewCategoryList, recyclerViewPopularList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +32,17 @@ private RecyclerView recyclerViewCategoryList, recyclerViewPopularList;
         bottomNavigation();
 
     }
-    private void bottomNavigation(){
-        FloatingActionButton floatingActionButton=findViewById(R.id.cartBtn);
+    private void bottomNavigation() {
+        FloatingActionButton floatingActionButton = findViewById(R.id.cartBtn);
         LinearLayout homeBtn = findViewById(R.id.homeBtn);
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,CartListActivity.class));
+                startActivity(new Intent(MainActivity.this, CartListActivity.class));
             }
         });
+
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

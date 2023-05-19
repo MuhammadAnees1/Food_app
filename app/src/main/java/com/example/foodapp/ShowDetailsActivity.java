@@ -15,9 +15,9 @@ public class ShowDetailsActivity extends AppCompatActivity {
     private TextView addToCartBtn;
     private TextView titleTxt, feeTxt, descriptionTxt, numberOderTxt;
     private ImageView plusBtn, minusBtn, picFood;
-private FoodDomain object;
-private ManagementCart managementCart;
-int numberOder=1;
+    private FoodDomain object;
+    private ManagementCart managementCart;
+    int numberOder=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
